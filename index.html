@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GS-Pull">
+  <meta name="keywords" content="Novel view synthesis, Neural rendering, Radiance fields, Neural networks, Quadtree">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GS-Pull</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://wen-yuan-zhang.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://wen-yuan-zhang.github.io/Fast-Learning-NeRF/">
+            Fast-Learning-NeRF
+          </a>
+          <a class="navbar-item" href="https://github.com/junshengzhou/VP2P-Match">
+            VP2P-Match
+          </a>
+          <a class="navbar-item" href="https://wen-yuan-zhang.github.io/VolumeRenderingPriors/">
+            VolumeRenderingPriors
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Neural Signed Distance Function Inference through Splatting 3D Gaussians Pulled on Zero-Level Set</h1>
+          <div class="column is-full_width">
+            <h2 class="title is-4">NeurIPS 2024</h2>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://wen-yuan-zhang.github.io/">Wenyuan Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://yushen-liu.github.io/">Yu-Shen Liu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://h312h.github.io/">Zhizhong Han</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>School of Software, Tsinghua University,</span>
+            <span class="author-block"><sup>2</sup>Wayne State University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/wen-yuan-zhang/GS-Pull"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            It is vital to infer a signed distance function (SDF) for multi-view based surface reconstruction. 3D Gaussian splatting (3DGS) provides a novel perspective for volume rendering, and shows advantages in rendering efficiency and quality. Although 3DGS provides a promising neural rendering option, it is still hard to infer SDFs for surface reconstruction with 3DGS due to the discreteness, the sparseness, and the off-surface drift of 3D Gaussians. To resolve these issues, we propose a method that seamlessly merge 3DGS with the learning of neural SDFs. Our key idea is to more effectively constrain the SDF inference with the multi-view consistency. To this end, we dynamically align 3D Gaussians on the zero-level set of the neural SDF, and then render the aligned 3D Gaussians through the differentiable rasterization. Meanwhile, we update the neural SDF by pulling neighboring space to the pulled 3D Gaussians, which progressively refine the signed distance field near the surface. With both differentiable pulling and splatting, we jointly optimize 3D Gaussians and the neural SDF with both RGB and geometry constraints, which recovers more accurate, smooth, and complete surfaces with more geometry details. Our numerical and visual comparisons show our superiority over the state-of-the-art results on the widely used benchmarks.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: -20px">Method</h2>
+        <img src="./resources/method.png" class="center">
+        <div class="content has-text-justified">
+          <p style="margin-top: 30px">
+            In this paper, we propose to seamlessly combine 3D Gaussians with the learning of neural SDFs. 
+            Our method provides a novel perspective to jointly learn 3D Gaussians and neural SDFs by more effectively using multi-view consistency and imposing geometry constraints.
+          </p>
+          <p style="margin-top: 30px">
+            Here is an overview of our method. 
+            We <b>(a)</b> pull 3D Gaussians onto the zero-level set for splatting, while 
+            <b>(b)</b> pulling the neighboring space onto the Gaussian disks for SDF inference. To better facilitate this procedure, we introduce three constraints: 
+            <b>(c)</b> push the Gaussians to become disks; 
+            <b>(d)</b> encourage the disk to be a tangent plane on the zero-level set; 
+            <b>(e)</b> constrain the query points to be pulled along the shortest path.
+          </p>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Results. -->
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Visualization Results</h2>
+
+
+        <h3 class="title is-4">Comparison on DTU Dataset</h3>
+        <div class="content has-text-justified">
+          <img src="./resources/dtu.png" class="center">
+          <p>
+            Visual comparisons on open surface reconstructions with error maps on DeepFashion3D dataset. Note that NeAT uses additional mask supervision. 
+            The transition from blue to yellow indicates small to large reconstruction errors.
+          </p>
+        </div>
+
+        <h3 class="title is-4">Comparison on Tanks and Temples Dataset</h3>
+        <div class="content has-text-justified">
+          <img src="./resources/tnt.png" class="center">
+        </div>
+
+        <h3 class="title is-4">Comparison on Mip-NeRF 360 Dataset</h3>
+        <div class="content has-text-justified">
+          <img src="./resources/mipnerf360.png" class="center">
+        </div>
+
+         
+        
+
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+     <pre><code>@inproceedings{zhang2024gspull,
+      title = {Neural Signed Distance Function Inference through Splatting 3D Gaussians Pulled on Zero-Level Set},
+      author = {Wenyuan Zhang and Yu-Shen Liu and Zhizhong Han},
+      booktitle = {Advances in Neural Information Processing Systems},
+      year = {2024},
+    }
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
