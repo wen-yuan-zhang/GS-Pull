@@ -1,0 +1,14 @@
+numpy==1.26.1
+torch==1.13.0
+torchvision==1.14.0
+tqdm
+trimesh
+pytorch3d==0.7.8
+lpips
+imageio
+Pillow==9.5.0
+json
+plyfile
+opencv-python
+tensorboardX
+PyMCubes
